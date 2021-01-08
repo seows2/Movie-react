@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { normalize } from "styled-normalize"
+import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
     ${normalize}
@@ -13,6 +13,11 @@ const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
     }
-`
+    /* button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    } */
+`;
 
 export default GlobalStyle;
