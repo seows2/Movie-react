@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components';
-import { IoIosSearch, IoIosMenu } from 'react-icons/io';
+import { IoIosSearch } from 'react-icons/io';
 
 const Position = styled.div`
   position: relative;
 `;
 
 const Container = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
+  position: fixed;
+  width: 90vw;
+  z-index: 5;
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ open }) => (open ? 'flex-end' : 'space-between')};
   padding: 1rem 0;
   color: ${({ color }) => color};
 `;
@@ -20,13 +20,22 @@ const LogoButton = styled.button`
   font-weight: bold;
   font-size: 1.5rem;
   color: inherit;
+  display: ${({ open }) => (open ? 'none' : 'block')};
 `;
 
 const IconButton = styled.button`
   color: inherit;
+  margin-right: 1rem;
+  display: ${({ open }) => (open ? 'none' : 'block')};
+  @media (min-width: 768px) {
+    margin-right: calc(1rem + 1rem);
+  }
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
-const IconContainer = styled.div`
+const MenuContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -39,8 +48,36 @@ const iconStyle = css`
 const SearchIcon = styled(IoIosSearch)`
   ${iconStyle}
 `;
-const MenuIcon = styled(IoIosMenu)`
-  ${iconStyle}
+
+const MenuButton = styled.button`
+  width: 2rem;
+  height: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: transparent;
+  cursor: pointer;
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: ${({ open }) => (open ? 'black' : 'red')};
+    transition: all 0.2s ease;
+
+    &:first-child {
+      width: ${({ open }) => (open ? '2rem' : '1.3rem')};
+    }
+
+    &:nth-child(2) {
+      opacity: ${({ open }) => (open ? 0 : 1)};
+      transform: ${({ open }) => (open ? 'translateX(20px)' : 'translateX(0)')};
+    }
+
+    &:nth-child(3) {
+      width: ${({ open }) => (open ? '2rem' : '1.3rem')};
+      margin-left: auto;
+    }
+  }
 `;
 
 export {
@@ -48,7 +85,7 @@ export {
   Container,
   LogoButton,
   IconButton,
-  IconContainer,
+  MenuContainer,
   SearchIcon,
-  MenuIcon,
+  MenuButton,
 };

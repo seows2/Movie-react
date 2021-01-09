@@ -1,23 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Wrapper } from '../../styles/variables';
+import { useMediaQuery } from 'react-responsive';
 import PropTypes from 'prop-types';
 import * as S from './Header.style';
 
+const MenuButton = ({ onClickMenu, open }) => {
+  return (
+    <S.MenuButton
+      open={open}
+      onClick={onClickMenu}
+      type="button"
+      aria-label="메뉴"
+    >
+      <div />
+      <div />
+      <div />
+    </S.MenuButton>
+  );
+};
+
 const Header = ({ color }) => {
+  const [open, setOpen] = useState(false);
+  const isTablet = useMediaQuery({ query: 'min-width: 768px' });
+
+  const onClickMenu = () => {
+    setOpen(!open);
+  };
+
   return (
     <header>
       <Wrapper>
         <S.Position>
-          <S.Container color={color}>
-            <S.LogoButton type="button">movie</S.LogoButton>
-            <S.IconContainer>
-              <S.IconButton type="button" aria-label="검색버튼">
+          <S.Container open={open} color={color}>
+            <S.LogoButton type="button" open={open}>
+              movie
+            </S.LogoButton>
+            <S.MenuContainer>
+              <S.IconButton type="button" aria-label="검색버튼" open={open}>
                 <S.SearchIcon />
               </S.IconButton>
-              <S.IconButton type="button" aria-label="메뉴버튼">
-                <S.MenuIcon />
-              </S.IconButton>
-            </S.IconContainer>
+              <MenuButton open={open} onClickMenu={onClickMenu} />
+            </S.MenuContainer>
           </S.Container>
         </S.Position>
       </Wrapper>
