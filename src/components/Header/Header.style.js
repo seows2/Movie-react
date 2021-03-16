@@ -66,7 +66,7 @@ const MenuButton = styled.button`
 
     &:first-child {
       width: ${({ open }) => (open ? '2.5rem' : '1.3rem')};
-      transform: ${({ open }) => (open ? 'translateY(10px) rotate(50deg)' : 'translateX(0)')};
+      transform: ${({ open }) => (open ? 'translateY(10px) rotate(45deg)' : 'translateX(0)')};
     }
 
     &:nth-child(2) {
@@ -76,7 +76,7 @@ const MenuButton = styled.button`
 
     &:nth-child(3) {
       width: ${({ open }) => (open ? '2.5rem' : '1.3rem')};
-      transform: ${({ open }) => (open ? 'translateY(-10px) rotate(-50deg)' : 'translateX(0)')};
+      transform: ${({ open }) => (open ? 'translateY(-10px) rotate(-45deg)' : 'translateX(0)')};
       margin-left: auto;
     }
   }
