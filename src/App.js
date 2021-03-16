@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import GlobalStyle from './styles/glabal';
 import Header from './components/Header/Header';
-import Home from './pages/index';
+import {Home} from './pages/index';
 
 const App = () => {
   return (
